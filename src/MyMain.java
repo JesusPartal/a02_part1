@@ -1,3 +1,5 @@
+import javax.sound.midi.SysexMessage;
+
 /**
  * The main class of our project.<br>.
  */
@@ -31,6 +33,7 @@ public class MyMain {
         m3.addElement(5, 5);
         m3.addElement(6, 2);
         m3.addElement(7, 6);
+
 
         //3. We create extra variables for the results
         int resI = 0;
@@ -82,6 +85,8 @@ public class MyMain {
 
         resI = ex.getNumAppearances(m3, 5);
         System.out.println(resI);
+
+
 
         //----------------------------
         //4. We test n_toThePowerof_m

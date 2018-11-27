@@ -73,20 +73,37 @@ public class DivideAndConquerAlgorithms {
      */
     public int maxInt(MyList<Integer> m){
         // TO-DO
-        if(m.length() == 0)
-            return -1;
-        else if (m.length() == 1)
-            return m.getElement(0);
-        else {
-            if (m.getElement(0) > m.getElement(1)){
-                m.removeElement(1);
-                return maxInt(m);
-            }
-            else {
-                m.removeElement(0);
-                return maxInt(m);
-            }
+        int scenario = 0;
+        int res = 0;
+        if (m.length() == 0)
+            scenario = 1;
+        if (m.length() == 1)
+            scenario = 2;
+        if (m.length() >= 2)
+            scenario = 3;
+
+        switch (scenario) {
+            case 1:
+                res = -1;
+                break;
+            case 2:
+                res = m.getElement(0);
+                break;
+            case 3:
+                if (m.getElement(0) > res) {
+                    int e0 = m.getElement(0);
+                    m.removeElement(0);
+                    res = e0;
+                    maxInt(m);
+                    m.addElement(0, e0);
+                } else {
+                    int e0 = m.getElement(0);
+                    maxInt(m);
+                    m.addElement(0, e0);
+                }
+                break;
         }
+        return res;
     }
 
     //-------------------------------------------------------------------
@@ -98,14 +115,29 @@ public class DivideAndConquerAlgorithms {
      * @return: Whether m is sorted in decreasing order or not.
      */
     public boolean isReverse(MyList<Integer> m){
-        if (m.length() == 0 || m.length() == 1) {
-            return true;
+        int scenario = 0;
+        boolean res = false;
+        if (m.length() == 0 || m.length() == 1)
+            scenario = 1;
+        if (m.length() >= 2)
+            scenario = 2;
+
+        switch (scenario) {
+            case 1:
+                res = false;
+                break;
+            case 2:
+                if(m.getElement(0) > m.getElement(1)){
+                    int e0 = m.getElement(0);
+                    res = true;
+                    m.removeElement(0);
+                    isReverse(m);
+                    m.addElement(0,e0);
+                } else {
+                    res = false;
+                }
         }
-        if (m.getElement(0) < m.getElement(1)) {
-            return false;
-        }
-        m.removeElement(0);
-        return isReverse(m);
+        return res;
     }
 
     //-------------------------------------------------------------------
@@ -119,17 +151,40 @@ public class DivideAndConquerAlgorithms {
      */
     public int getNumAppearances(MyList<Integer> m, int n) {
         // TO-DO
-        if (m.length() == 0) {
-            return 0;
-        } else {
-            if (m.getElement(0) == n) {
-                m.removeElement(0);
-                return 1 + getNumAppearances(m, n);
-            } else {
-                m.removeElement(0);
-                return 0 + getNumAppearances(m, n);
-            }
+        int scenario = 0;
+        int res = 0;
+
+        if (m.length() == 0)
+            scenario = 1;
+        if (m.length() == 1)
+            scenario = 2;
+        if (m.length() >= 2)
+            scenario = 3;
+
+        switch (scenario) {
+            case 1:
+                res = -1;
+                break;
+            case 2:
+                if (m.getElement(0) == n) {
+                    res++;
+                }
+                break;
+            case 3:
+                if (m.getElement(0) == n) {
+                    int e0 = m.getElement(0);
+                    m.removeElement(0);
+                    res = 1 + getNumAppearances(m,n);
+                    m.addElement(0, e0);
+                } else {
+                    int e0 = m.getElement(0);
+                    m.removeElement(0);
+                    res = getNumAppearances(m,n);
+                    m.addElement(0, e0);
+                }
+                break;
         }
+        return res;
     }
 
     //-------------------------------------------------------------------
