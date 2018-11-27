@@ -98,38 +98,14 @@ public class DivideAndConquerAlgorithms {
      * @return: Whether m is sorted in decreasing order or not.
      */
     public boolean isReverse(MyList<Integer> m){
-        int scenario = 0;
-        // Rule 1: MyList is empty
-        if (m.length() == 0) {
-            scenario = 1;
+        if (m.length() == 0 || m.length() == 1) {
+            return true;
         }
-        // Rule 2: MyList has only 1 item
-        else if (m.length() == 1) {
-            scenario = 2;
+        if (m.getElement(0) < m.getElement(1)) {
+            return false;
         }
-        // Rule 3: Base case
-        else if ((m.getElement(0) > m.getElement(1)) && m.length() == 2) {
-            scenario = 3;
-        }
-        // Rule 4: 1st item is bigger than 2nd item and length is more than 2
-        else if (m.getElement(0) > m.getElement(1) && m.length() > 2) {
-            scenario = 4;
-        }
-
-        switch (scenario) {
-            case 1:
-                return false;
-            case 2:
-                return false;
-            case 3:
-                return true;
-            case 4:
-                m.removeElement(0);
-                return isReverse(m);
-            default:
-                return false;
-
-        }
+        m.removeElement(0);
+        return isReverse(m);
     }
 
     //-------------------------------------------------------------------
@@ -206,10 +182,13 @@ public class DivideAndConquerAlgorithms {
     public void drawImage(int n){
         // TO-DO
         if(n==0) return;
-        else {
-            for (int i = 0; i < n; i++) {
-                System.out.println(i);
-            }
+
+        drawImage(n-1);
+        String p = "";
+        for (int i=0; i<n; i++) {
+            p = p + "*";
         }
+        p += "\n";
+        System.out.println(p);
     }
 }
