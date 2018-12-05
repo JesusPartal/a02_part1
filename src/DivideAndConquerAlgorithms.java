@@ -1,5 +1,7 @@
+//JESUS PARTAL - R00092544
+
 /**
- * The class contains the Divide and Conquer-based Algorithms we are using. 
+ * The class contains the Divide and Conquer-based Algorithms we are using.
  */
 public class DivideAndConquerAlgorithms {
 
@@ -72,23 +74,43 @@ public class DivideAndConquerAlgorithms {
      * @return: The maximum item of MyList
      */
     public int maxInt(MyList<Integer> m){
-        // TO-DO
-        int scenario = 0;
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
+
+        //-----------------------------
+        //Output Variable --> InitialValue
+        //-----------------------------
         int res = 0;
+
+        //-----------------------------
+        // I. SCENARIO IDENTIFICATION
+        //-----------------------------
+
+        int scenario = 0;
+        //Rule 1. MyList is empty
         if (m.length() == 0)
             scenario = 1;
+        //Rule 2. MyList has one element
         if (m.length() == 1)
             scenario = 2;
+        //Rule 3. MyList has more than one element
         if (m.length() >= 2)
             scenario = 3;
 
+        //-----------------------------
+        // II. SCENARIO IMPLEMENTATION
+        //-----------------------------
         switch (scenario) {
+            //Rule 1. MyList is empty
             case 1:
                 res = -1;
                 break;
+            //Rule 2. MyList has one element
             case 2:
                 res = m.getElement(0);
                 break;
+            //Rule 3. MyList has more than one element
             case 3:
                 if (m.getElement(0) > res) {
                     int e0 = m.getElement(0);
@@ -103,6 +125,10 @@ public class DivideAndConquerAlgorithms {
                 }
                 break;
         }
+
+        //-----------------------------
+        //Output Variable --> Return FinalValue
+        //-----------------------------
         return res;
     }
 
@@ -115,17 +141,35 @@ public class DivideAndConquerAlgorithms {
      * @return: Whether m is sorted in decreasing order or not.
      */
     public boolean isReverse(MyList<Integer> m){
-        int scenario = 0;
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
+
+        //-----------------------------
+        //Output Variable --> InitialValue
+        //-----------------------------
         boolean res = false;
+
+        //-----------------------------
+        // I. SCENARIO IDENTIFICATION
+        //-----------------------------
+        int scenario = 0;
+        //Rule 1. MyList length is equal or less than 1
         if (m.length() == 0 || m.length() == 1)
             scenario = 1;
+        //Rule 2. MyList has more than 1 element
         if (m.length() >= 2)
             scenario = 2;
 
+        //-----------------------------
+        // II. SCENARIO IMPLEMENTATION
+        //-----------------------------
         switch (scenario) {
+            //Rule 1. MyList length is equal or less than 1
             case 1:
                 res = false;
                 break;
+            //Rule 2. MyList has more than 1 element
             case 2:
                 if(m.getElement(0) > m.getElement(1)){
                     int e0 = m.getElement(0);
@@ -137,6 +181,10 @@ public class DivideAndConquerAlgorithms {
                     res = false;
                 }
         }
+
+        //-----------------------------
+        //Output Variable --> Return FinalValue
+        //-----------------------------
         return res;
     }
 
@@ -150,26 +198,44 @@ public class DivideAndConquerAlgorithms {
      * @return: The amount of appearances of n into m
      */
     public int getNumAppearances(MyList<Integer> m, int n) {
-        // TO-DO
-        int scenario = 0;
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
+
+        //-----------------------------
+        //Output Variable --> InitialValue
+        //-----------------------------
         int res = 0;
 
+        //-----------------------------
+        // I. SCENARIO IDENTIFICATION
+        //-----------------------------
+        int scenario = 0;
+        //Rule 1. MyList is empty
         if (m.length() == 0)
             scenario = 1;
+        //Rule 2. MyList has 1 element
         if (m.length() == 1)
             scenario = 2;
+        //Rule 3. MyList has more than 1 element
         if (m.length() >= 2)
             scenario = 3;
 
+        //-----------------------------
+        // II. SCENARIO IMPLEMENTATION
+        //-----------------------------
         switch (scenario) {
+            //Rule 1. MyList is empty
             case 1:
                 res = -1;
                 break;
+            //Rule 2. MyList has 1 element
             case 2:
                 if (m.getElement(0) == n) {
                     res++;
                 }
                 break;
+            //Rule 3. MyList has more than 1 element
             case 3:
                 if (m.getElement(0) == n) {
                     int e0 = m.getElement(0);
@@ -184,6 +250,10 @@ public class DivideAndConquerAlgorithms {
                 }
                 break;
         }
+
+        //-----------------------------
+        //Output Variable --> Return FinalValue
+        //-----------------------------
         return res;
     }
 
@@ -198,9 +268,15 @@ public class DivideAndConquerAlgorithms {
      */
 
     public int power(int n, int m){
-        // TO-DO
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
         if (m == 0)
             return 1;
+
+        //-----------------------------
+        //Output Variable --> Return FinalValue
+        //-----------------------------
         return (n * power(n, m-1));
     }
 
@@ -213,7 +289,9 @@ public class DivideAndConquerAlgorithms {
      * @return: The term being computed
      */
     public int lucas(int n){
-        // TO-DO
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
         if (n == 0) {
             return 2;
         } else if ( n == 1) {
@@ -235,7 +313,9 @@ public class DivideAndConquerAlgorithms {
      * @param n: The length of the desired pattern
      */
     public void drawImage(int n){
-        // TO-DO
+        //-----------------------------
+        //SET OF OPS
+        //-----------------------------
         if(n==0) return;
 
         drawImage(n-1);
@@ -244,6 +324,10 @@ public class DivideAndConquerAlgorithms {
             p = p + "*";
         }
         p += "\n";
+
+        //-----------------------------
+        //Print
+        //-----------------------------
         System.out.println(p);
     }
 }
